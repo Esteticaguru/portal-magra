@@ -1,508 +1,304 @@
-'use client';
-
-import React from 'react';
-import Link from 'next/link';
-
-export default function PortalMagraLanding() {
-  const WHATSAPP_NUMBER = '17862535032';
-
-  const styles = {
-    container: {
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 75%, #ffd700 100%)',
-      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    },
-    heroSection: {
-      padding: '80px 20px',
-      textAlign: 'center',
-    },
-    maxWidth: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-    },
-    badge: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '8px',
-      background: 'rgba(255, 255, 255, 0.9)',
-      color: '#764ba2',
-      padding: '8px 20px',
-      borderRadius: '25px',
-      fontSize: '14px',
-      fontWeight: '600',
-      marginBottom: '30px',
-    },
-    title: {
-      fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-      fontWeight: '800',
-      color: 'white',
-      marginBottom: '20px',
-      lineHeight: '1.2',
-    },
-    subtitle: {
-      fontSize: '20px',
-      color: 'rgba(255, 255, 255, 0.95)',
-      marginBottom: '40px',
-      maxWidth: '800px',
-      margin: '0 auto 40px',
-    },
-    socialProof: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '30px',
-      marginBottom: '40px',
-      flexWrap: 'wrap',
-    },
-    avatars: {
-      display: 'flex',
-      marginLeft: '10px',
-    },
-    avatar: {
-      width: '40px',
-      height: '40px',
-      borderRadius: '50%',
-      background: 'linear-gradient(135deg, #667eea, #f093fb)',
-      border: '2px solid white',
-      marginLeft: '-10px',
-    },
-    stars: {
-      display: 'flex',
-      gap: '2px',
-      color: '#ffd700',
-      fontSize: '20px',
-    },
-    ctaButton: {
-      background: 'linear-gradient(135deg, #00d084, #00a86b)',
-      color: 'white',
-      padding: '18px 40px',
-      fontSize: '18px',
-      fontWeight: '700',
-      border: 'none',
-      borderRadius: '50px',
-      cursor: 'pointer',
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '10px',
-      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-      transition: 'all 0.3s ease',
-    },
-    benefitsSection: {
-      padding: '60px 20px',
-      background: 'white',
-    },
-    sectionTitle: {
-      fontSize: '36px',
-      fontWeight: '700',
-      color: '#333',
-      textAlign: 'center',
-      marginBottom: '50px',
-    },
-    benefitsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: '30px',
-      maxWidth: '1000px',
-      margin: '0 auto',
-    },
-    benefitCard: {
-      background: 'white',
-      padding: '30px',
-      borderRadius: '15px',
-      boxShadow: '0 5px 20px rgba(0,0,0,0.1)',
-      textAlign: 'center',
-      transition: 'transform 0.3s ease',
-    },
-    benefitIcon: {
-      fontSize: '40px',
-      marginBottom: '20px',
-    },
-    benefitTitle: {
-      fontSize: '22px',
-      fontWeight: '600',
-      color: '#333',
-      marginBottom: '15px',
-    },
-    benefitText: {
-      color: '#666',
-      lineHeight: '1.6',
-    },
-    testimonialsSection: {
-      padding: '60px 20px',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-    },
-    testimonialCard: {
-      background: 'white',
-      padding: '25px',
-      borderRadius: '15px',
-      boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-    },
-    testimonialText: {
-      fontStyle: 'italic',
-      color: '#555',
-      marginBottom: '20px',
-      lineHeight: '1.6',
-    },
-    testimonialAuthor: {
-      fontWeight: '600',
-      color: '#333',
-      marginBottom: '5px',
-    },
-    testimonialInfo: {
-      color: '#888',
-      fontSize: '14px',
-    },
-    howItWorksSection: {
-      padding: '60px 20px',
-      background: 'white',
-    },
-    stepsContainer: {
-      maxWidth: '800px',
-      margin: '0 auto',
-    },
-    step: {
-      display: 'flex',
-      gap: '20px',
-      marginBottom: '30px',
-      alignItems: 'flex-start',
-    },
-    stepNumber: {
-      width: '50px',
-      height: '50px',
-      background: 'linear-gradient(135deg, #667eea, #764ba2)',
-      color: 'white',
-      borderRadius: '50%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontWeight: '700',
-      fontSize: '20px',
-      flexShrink: 0,
-    },
-    stepContent: {
-      flex: 1,
-    },
-    stepTitle: {
-      fontSize: '20px',
-      fontWeight: '600',
-      color: '#333',
-      marginBottom: '8px',
-    },
-    stepText: {
-      color: '#666',
-      lineHeight: '1.6',
-    },
-    pricingBox: {
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '40px',
-      borderRadius: '20px',
-      textAlign: 'center',
-      marginTop: '40px',
-      color: 'white',
-    },
-    priceContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '20px',
-      marginBottom: '20px',
-    },
-    oldPrice: {
-      fontSize: '24px',
-      textDecoration: 'line-through',
-      opacity: 0.7,
-    },
-    newPrice: {
-      fontSize: '48px',
-      fontWeight: '800',
-    },
-    faqSection: {
-      padding: '60px 20px',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-    },
-    faqContainer: {
-      maxWidth: '800px',
-      margin: '0 auto',
-    },
-    faqItem: {
-      background: 'white',
-      padding: '25px',
-      borderRadius: '10px',
-      marginBottom: '20px',
-    },
-    faqQuestion: {
-      fontSize: '18px',
-      fontWeight: '600',
-      color: '#333',
-      marginBottom: '10px',
-    },
-    faqAnswer: {
-      color: '#666',
-      lineHeight: '1.6',
-    },
-    finalCTA: {
-      padding: '80px 20px',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      textAlign: 'center',
-    },
-    finalTitle: {
-      fontSize: '42px',
-      fontWeight: '800',
-      color: 'white',
-      marginBottom: '20px',
-    },
-    finalText: {
-      fontSize: '20px',
-      color: 'rgba(255, 255, 255, 0.95)',
-      marginBottom: '40px',
-    },
-  };
-
+export default function Home() {
   return (
-    <div style={styles.container}>
-      {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.maxWidth}>
-          <div style={styles.badge}>
-            ✨ EXCLUSIVO PARA BRASILEIRAS NOS EUA
-          </div>
-          
-          <h1 style={styles.title}>
-            Transforme Sua Vida nos EUA em{' '}
-            <span style={{ color: '#ffd700' }}>90 Dias</span>
-          </h1>
-          
-          <p style={styles.subtitle}>
-            Descubra como centenas de brasileiras estão conquistando bem-estar, 
-            equilíbrio e qualidade de vida com mentoria personalizada
-          </p>
+    <main 
+      className="min-h-screen flex flex-col items-center justify-center p-8 md:p-24"
+      style={{
+        background: 'linear-gradient(135deg, #fff5f7 0%, #ffe8ed 100%)'
+      }}
+    >
+      {/* Header Portal Magra com Bandeiras */}
+      <div className="z-10 max-w-5xl w-full items-center justify-center text-center mb-12">
+        <h1 
+          className="text-5xl md:text-7xl font-bold mb-6"
+          style={{ color: '#FF6B8D' }}
+        >
+          🇧🇷 Portal Magra 🇺🇸
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          Transformando a vida de brasileiras nos Estados Unidos através de bem-estar personalizado
+        </p>
+      </div>
 
-          <div style={styles.socialProof}>
-            <div style={styles.avatars}>
-              {[1,2,3,4,5].map(i => (
-                <div key={i} style={{...styles.avatar, zIndex: 5-i}} />
-              ))}
-            </div>
-            <div>
-              <div style={styles.stars}>
-                {'★★★★★'}
-              </div>
-              <p style={{ color: 'white', fontSize: '14px' }}>+247 brasileiras transformadas</p>
-            </div>
-          </div>
-
-          <Link href="/quiz" style={{ textDecoration: 'none' }}>
-            <button 
-              style={styles.ctaButton}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.3)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
-              }}
-            >
-              Fazer Quiz Gratuito (2 min) →
-            </button>
-          </Link>
-          
-          <p style={{ color: 'rgba(255,255,255,0.8)', marginTop: '20px', fontSize: '14px' }}>
-            Sem compromisso • Resultado imediato • 100% personalizado
+      {/* Título Principal do Quiz */}
+      <div className="relative flex place-items-center my-12 text-center max-w-4xl">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            Quiz de Arquétipos de Brasileiras nos EUA
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Descubra em 1 minuto qual seu perfil único e receba um guia personalizado gratuito direto no WhatsApp
           </p>
         </div>
-      </section>
+      </div>
 
-      {/* Benefits Section */}
-      <section style={styles.benefitsSection}>
-        <h2 style={styles.sectionTitle}>O Que o MPM Vai Fazer Por Você</h2>
+      {/* Card Principal do Quiz */}
+      <div className="w-full max-w-lg mx-auto mb-12">
+        <div 
+          className="rounded-2xl border-2 p-8 md:p-10 transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center"
+          style={{
+            borderColor: '#FF6B8D',
+            background: 'linear-gradient(135deg, #fff0f3 0%, #ffffff 100%)',
+            boxShadow: '0 8px 32px rgba(255, 107, 141, 0.15)'
+          }}
+        >
+          <div className="text-5xl mb-6">🎯</div>
+          
+          <h3 className="text-3xl font-bold mb-4" style={{ color: '#FF6B8D' }}>
+            Descobrir Meu Arquétipo
+          </h3>
+          
+          <p className="text-gray-600 mb-8 text-base leading-relaxed">
+            7 perguntas estratégicas para identificar seu perfil único de brasileira nos EUA e receber orientações personalizadas para sua jornada de bem-estar.
+          </p>
+
+          <a
+            href="/quiz"
+            className="inline-block w-full py-5 px-8 rounded-xl font-bold text-xl text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 group"
+            style={{
+              background: 'linear-gradient(135deg, #FF6B8D 0%, #FF8FA3 100%)'
+            }}
+          >
+            Iniciar Quiz Gratuito
+            <span className="inline-block transition-transform group-hover:translate-x-2 motion-reduce:transform-none ml-3">
+              →
+            </span>
+          </a>
+
+          <p className="text-xs text-gray-500 mt-4">
+            ⏱ Leva apenas 1 minuto • 📱 Resultado no WhatsApp
+          </p>
+        </div>
+      </div>
+
+      {/* Benefícios em Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+        <div 
+          className="text-center p-8 rounded-2xl transition-all duration-300 hover:scale-105"
+          style={{
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 107, 141, 0.2)'
+          }}
+        >
+          <div className="text-4xl mb-4">⏱</div>
+          <h4 className="font-bold text-lg text-gray-800 mb-3" style={{ color: '#FF6B8D' }}>
+            Rápido & Preciso
+          </h4>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Quiz científico de 1 minuto que identifica seu arquétipo único de brasileira nos EUA
+          </p>
+        </div>
         
-        <div style={styles.benefitsGrid}>
-          <div style={styles.benefitCard}>
-            <div style={styles.benefitIcon}>❤️</div>
-            <h3 style={styles.benefitTitle}>Bem-Estar Total</h3>
-            <p style={styles.benefitText}>
-              Corpo, mente e emoções em equilíbrio para viver plenamente nos EUA
-            </p>
+        <div 
+          className="text-center p-8 rounded-2xl transition-all duration-300 hover:scale-105"
+          style={{
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 107, 141, 0.2)'
+          }}
+        >
+          <div className="text-4xl mb-4">🎁</div>
+          <h4 className="font-bold text-lg text-gray-800 mb-3" style={{ color: '#FF6B8D' }}>
+            Material Exclusivo
+          </h4>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Guia personalizado com estratégias específicas para seu perfil, totalmente gratuito
+          </p>
+        </div>
+        
+        <div 
+          className="text-center p-8 rounded-2xl transition-all duration-300 hover:scale-105"
+          style={{
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 107, 141, 0.2)'
+          }}
+        >
+          <div className="text-4xl mb-4">📱</div>
+          <h4 className="font-bold text-lg text-gray-800 mb-3" style={{ color: '#FF6B8D' }}>
+            Direto no WhatsApp
+          </h4>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Receba seu resultado completo e material personalizado direto no seu celular
+          </p>
+        </div>
+      </div>
+
+      {/* Preview dos Arquétipos */}
+      <div className="max-w-5xl mx-auto text-center mb-16">
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8">
+          Descubra qual destes arquétipos representa você:
+        </h3>
+        
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <div 
+            className="p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            style={{
+              background: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <div className="text-3xl mb-3">🌱</div>
+            <p className="text-sm font-semibold text-gray-700">A Recém-Chegada</p>
+            <p className="text-xs text-gray-500 mt-1">Adaptação aos EUA</p>
           </div>
           
-          <div style={styles.benefitCard}>
-            <div style={styles.benefitIcon}>👥</div>
-            <h3 style={styles.benefitTitle}>Mentoria Personalizada</h3>
-            <p style={styles.benefitText}>
-              Apoio individual focado nos seus desafios e objetivos específicos
-            </p>
+          <div 
+            className="p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            style={{
+              background: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <div className="text-3xl mb-3">🚀</div>
+            <p className="text-sm font-semibold text-gray-700">A Acelerada</p>
+            <p className="text-xs text-gray-500 mt-1">Sempre correndo</p>
           </div>
           
-          <div style={styles.benefitCard}>
-            <div style={styles.benefitIcon}>🏆</div>
-            <h3 style={styles.benefitTitle}>Resultados Garantidos</h3>
-            <p style={styles.benefitText}>
-              Métodos comprovados com mais de 247 brasileiras transformadas
-            </p>
+          <div 
+            className="p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            style={{
+              background: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <div className="text-3xl mb-3">💪</div>
+            <p className="text-sm font-semibold text-gray-700">A Resistente</p>
+            <p className="text-xs text-gray-500 mt-1">Já tentou de tudo</p>
+          </div>
+          
+          <div 
+            className="p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            style={{
+              background: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <div className="text-3xl mb-3">🪞</div>
+            <p className="text-sm font-semibold text-gray-700">A Invisível</p>
+            <p className="text-xs text-gray-500 mt-1">Autoestima em baixa</p>
+          </div>
+          
+          <div 
+            className="p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg col-span-2 md:col-span-1"
+            style={{
+              background: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <div className="text-3xl mb-3">🇧🇷</div>
+            <p className="text-sm font-semibold text-gray-700">A Nostálgica</p>
+            <p className="text-xs text-gray-500 mt-1">Saudade do Brasil</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Testimonials Section */}
-      <section style={styles.testimonialsSection}>
-        <h2 style={styles.sectionTitle}>Histórias Reais de Transformação</h2>
-        
-        <div style={styles.benefitsGrid}>
-          <div style={styles.testimonialCard}>
-            <div style={styles.stars}>★★★★★</div>
-            <p style={styles.testimonialText}>
-              "O MPM mudou minha vida! Perdi 12kg e encontrei equilíbrio emocional que nunca tive."
-            </p>
-            <p style={styles.testimonialAuthor}>Juliana Silva</p>
-            <p style={styles.testimonialInfo}>Miami, FL • Cliente há 14 meses</p>
-          </div>
-          
-          <div style={styles.testimonialCard}>
-            <div style={styles.stars}>★★★★★</div>
-            <p style={styles.testimonialText}>
-              "Finalmente me sinto em casa nos EUA. A mentoria foi essencial para minha adaptação."
-            </p>
-            <p style={styles.testimonialAuthor}>Mariana Costa</p>
-            <p style={styles.testimonialInfo}>New York, NY • Cliente há 8 meses</p>
-          </div>
-          
-          <div style={styles.testimonialCard}>
-            <div style={styles.stars}>★★★★★</div>
-            <p style={styles.testimonialText}>
-              "Renovei pela 4ª vez! Os resultados são consistentes e o apoio é incomparável."
-            </p>
-            <p style={styles.testimonialAuthor}>Patricia Oliveira</p>
-            <p style={styles.testimonialInfo}>Los Angeles, CA • Cliente há 1 ano</p>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section style={styles.howItWorksSection}>
-        <h2 style={styles.sectionTitle}>Como Funciona o MPM</h2>
-        
-        <div style={styles.stepsContainer}>
-          <div style={styles.step}>
-            <div style={styles.stepNumber}>1</div>
-            <div style={styles.stepContent}>
-              <h3 style={styles.stepTitle}>Avaliação Personalizada</h3>
-              <p style={styles.stepText}>
-                30 minutos com sua mentora para entender seus desafios únicos
-              </p>
-            </div>
-          </div>
-          
-          <div style={styles.step}>
-            <div style={styles.stepNumber}>2</div>
-            <div style={styles.stepContent}>
-              <h3 style={styles.stepTitle}>Plano Sob Medida</h3>
-              <p style={styles.stepText}>
-                Estratégias específicas para sua realidade e objetivos
-              </p>
-            </div>
-          </div>
-          
-          <div style={styles.step}>
-            <div style={styles.stepNumber}>3</div>
-            <div style={styles.stepContent}>
-              <h3 style={styles.stepTitle}>Acompanhamento Semanal</h3>
-              <p style={styles.stepText}>
-                Suporte contínuo via WhatsApp + sessões individuais
-              </p>
-            </div>
-          </div>
-          
-          <div style={styles.step}>
-            <div style={styles.stepNumber}>4</div>
-            <div style={styles.stepContent}>
-              <h3 style={styles.stepTitle}>Resultados em 90 Dias</h3>
-              <p style={styles.stepText}>
-                Transformação completa com apoio especializado
-              </p>
-            </div>
-          </div>
-          
-          <div style={styles.pricingBox}>
-            <p style={{ marginBottom: '10px', opacity: 0.9 }}>Investimento no seu bem-estar:</p>
-            <div style={styles.priceContainer}>
-              <span style={styles.oldPrice}>$297</span>
-              <span style={styles.newPrice}>$167</span>
-              <span style={{ fontSize: '16px' }}>por 3 meses</span>
-            </div>
-            <p style={{ marginBottom: '30px', opacity: 0.9 }}>
-              Menos de $2 por dia para transformar sua vida
-            </p>
-            
-            <Link href="/quiz" style={{ textDecoration: 'none' }}>
-              <button 
-                style={{...styles.ctaButton, background: 'white', color: '#764ba2'}}
-              >
-                Fazer Quiz e Descobrir Meu Perfil
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section style={styles.faqSection}>
-        <h2 style={styles.sectionTitle}>Perguntas Frequentes</h2>
-        
-        <div style={styles.faqContainer}>
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>Quanto tempo preciso dedicar por semana?</h3>
-            <p style={styles.faqAnswer}>
-              Apenas 1 hora por semana para as sessões + 15 minutos diários para as práticas.
-            </p>
-          </div>
-          
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>E se eu não gostar do programa?</h3>
-            <p style={styles.faqAnswer}>
-              Oferecemos garantia de 30 dias. Se não ver resultados, devolvemos seu investimento.
-            </p>
-          </div>
-          
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>Preciso falar inglês fluente?</h3>
-            <p style={styles.faqAnswer}>
-              Não! Todo o programa é em português, feito por e para brasileiras.
-            </p>
-          </div>
-          
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>Funciona para qualquer idade?</h3>
-            <p style={styles.faqAnswer}>
-              Sim! Temos clientes de 18 a 65 anos, cada uma com seu plano personalizado.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section style={styles.finalCTA}>
-        <h2 style={styles.finalTitle}>
-          Sua Nova Vida Começa com Uma Decisão
-        </h2>
-        <p style={styles.finalText}>
-          Descubra em 2 minutos se você tem o perfil para resultados extraordinários
+      {/* Seção de Prova Social */}
+      <div 
+        className="max-w-4xl mx-auto text-center p-8 md:p-12 rounded-2xl mb-16"
+        style={{
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 243, 0.9) 100%)',
+          border: '1px solid rgba(255, 107, 141, 0.3)'
+        }}
+      >
+        <div className="text-4xl mb-6">✨</div>
+        <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#FF6B8D' }}>
+          Mais de 2.000 brasileiras já descobriram seu arquétipo
+        </h3>
+        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          Junte-se às brasileiras que estão transformando sua saúde e bem-estar nos EUA com orientações personalizadas
         </p>
         
-        <Link href="/quiz" style={{ textDecoration: 'none' }}>
-          <button 
-            style={{...styles.ctaButton, fontSize: '22px', padding: '20px 50px'}}
-          >
-            💬 Fazer Quiz Gratuito Agora
-          </button>
-        </Link>
-        
-        <div style={{ marginTop: '30px', color: 'rgba(255,255,255,0.8)' }}>
-          <span style={{ margin: '0 15px' }}>✓ Sem cartão de crédito</span>
-          <span style={{ margin: '0 15px' }}>✓ 100% Seguro</span>
-          <span style={{ margin: '0 15px' }}>✓ Resultado imediato</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="text-center">
+            <div className="text-2xl font-bold" style={{ color: '#FF6B8D' }}>2.000+</div>
+            <p className="text-sm text-gray-600">Brasileiras atendidas</p>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold" style={{ color: '#FF6B8D' }}>⭐⭐⭐⭐⭐</div>
+            <p className="text-sm text-gray-600">Avaliação média</p>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold" style={{ color: '#FF6B8D' }}>7 dias</div>
+            <p className="text-sm text-gray-600">Para ver resultados</p>
+          </div>
         </div>
-      </section>
-    </div>
-  );
+
+        <a
+          href="/quiz"
+          className="inline-block py-4 px-10 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-pink-50 hover-portal-button"
+          style={{
+            borderColor: '#FF6B8D',
+            color: '#FF6B8D',
+            backgroundColor: 'rgba(255, 107, 141, 0.1)',
+            border: '2px solid #FF6B8D'
+          }}
+        >
+          Descobrir Meu Arquétipo Agora →
+        </a>
+      </div>
+
+      {/* FAQ Rápido */}
+      <div className="max-w-3xl mx-auto text-center mb-16">
+        <h3 className="text-xl font-bold text-gray-800 mb-8">Perguntas Frequentes</h3>
+        
+        <div className="grid gap-6 text-left">
+          <div 
+            className="p-6 rounded-xl"
+            style={{
+              background: 'rgba(255, 255, 255, 0.7)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <h4 className="font-semibold mb-2" style={{ color: '#FF6B8D' }}>
+              🤔 O quiz é realmente gratuito?
+            </h4>
+            <p className="text-sm text-gray-600">
+              Sim! O quiz e o material personalizado são 100% gratuitos. Você recebe tudo no WhatsApp sem custo algum.
+            </p>
+          </div>
+          
+          <div 
+            className="p-6 rounded-xl"
+            style={{
+              background: 'rgba(255, 255, 255, 0.7)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <h4 className="font-semibold mb-2" style={{ color: '#FF6B8D' }}>
+              ⏰ Quanto tempo leva para fazer?
+            </h4>
+            <p className="text-sm text-gray-600">
+              Apenas 1 minuto! São 7 perguntas rápidas e você recebe seu resultado imediatamente.
+            </p>
+          </div>
+          
+          <div 
+            className="p-6 rounded-xl"
+            style={{
+              background: 'rgba(255, 255, 255, 0.7)',
+              border: '1px solid rgba(255, 107, 141, 0.2)'
+            }}
+          >
+            <h4 className="font-semibold mb-2" style={{ color: '#FF6B8D' }}>
+              📱 Como recebo o resultado?
+            </h4>
+            <p className="text-sm text-gray-600">
+              Após completar o quiz, você será direcionada para o WhatsApp onde receberá seu arquétipo e material personalizado.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="text-center">
+        <p className="text-sm text-gray-400 mb-4">
+          © 2024 Portal Magra - Transformando vidas de brasileiras nos EUA
+        </p>
+        <p className="text-xs text-gray-400">
+          ✨ Bem-estar personalizado • 🇧🇷 Feito por brasileiras para brasileiras 🇺🇸
+        </p>
+      </div>
+    </main>
+  )
 }
