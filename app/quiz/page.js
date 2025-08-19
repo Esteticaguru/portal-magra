@@ -531,25 +531,25 @@ Obrigada! 💖`;
                     <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-sm font-medium">Plano de 7 dias específico para seu arquétipo</span>
+                    <span className="text-sm font-medium">3 motivos que explicam por que você se sente assim</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-sm font-medium">3 estratégias que cabem na sua rotina nos EUA</span>
+                    <span className="text-sm font-medium">3 dicas práticas para começar a mudar HOJE</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-sm font-medium">Guia "Brasileira Magra nos EUA" (PDF exclusivo)</span>
+                    <span className="text-sm font-medium">Guia "Mente Blindada nos EUA" (PDF exclusivo)</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-sm font-medium">Acesso ao grupo VIP de brasileiras (limitado)</span>
+                    <span className="text-sm font-medium">Convite especial para avaliação personalizada (limitado)</span>
                   </div>
                 </div>
               </div>
