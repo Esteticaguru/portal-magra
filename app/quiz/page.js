@@ -368,26 +368,8 @@ Façam o teste de 1 minuto: https://portalmagra.com/quiz
     const profile = profileKey || calcProfile();
     const p = profiles[profile];
     
-    const msg = `Olá! 👋
+   const msg = `Olá acabei de fazer o quiz, descobri que sou ${p.title.toUpperCase()} e gostaria do material por favor`;
 
-Acabei de fazer o Quiz do Portal Magra e descobri meu arquétipo:
-
-🎯 MEU RESULTADO: ${p.title.toUpperCase()}
-
-${p.description}
-
-⏰ URGENTE: Tenho 24h para acessar meu material gratuito!
-
-✅ Quero receber meu MATERIAL COMPLETO:
-
-• Plano de 7 dias específico para meu arquétipo
-• 3 estratégias que cabem na minha rotina nos EUA  
-• Guia "Brasileira Magra nos EUA" (PDF exclusivo)
-• Acesso ao grupo VIP de brasileiras
-
-Por favor, me envie tudo AGORA! 🙏
-
-Obrigada! 💖`;
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
     track('WhatsAppClick', { profile, ref: urlParams.ref, utm_source: urlParams.utm_source });
