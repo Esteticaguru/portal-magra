@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <head>
-        {/* Meta Pixel (Facebook) - SUBSTITUA SEU_PIXEL_ID */}
+        {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -28,30 +28,22 @@ export default function RootLayout({ children }) {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', 'SEU_PIXEL_ID');
+              fbq('init', '1124401996331664');
               fbq('track', 'PageView');
             `,
           }}
         />
-
-        {/* Google Analytics 4 - SUBSTITUA SEU_GA4_ID */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=SEU_GA4_ID"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'SEU_GA4_ID');
-            `,
-          }}
-        />
+        <noscript>
+          <img 
+            height="1" 
+            width="1" 
+            style={{display:'none'}}
+            src="https://www.facebook.com/tr?id=1124401996331664&ev=PageView&noscript=1"
+          />
+        </noscript>
+        {/* End Meta Pixel Code */}
       </head>
       
-      {/* BODY SEM NENHUM BACKGROUND - DEIXA O QUIZ CONTROLAR */}
       <body className={inter.className}>
         {children}
       </body>
